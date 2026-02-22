@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { products } from "./data";
 import ProductCard from "./components/ProductCard";
 import "./App.css";
+import ReactGA from "react-ga4";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -20,6 +21,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
+  useEffect(() => {
+  ReactGA.initialize("G-YNC4K78BB8");
+  ReactGA.send("pageview");
+}, []);
 
   const toggleWishlist = (id) => {
     if (wishlist.includes(id)) {

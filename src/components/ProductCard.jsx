@@ -1,4 +1,5 @@
 import ReactGA from "react-ga4";
+
 function ProductCard({ product, toggleWishlist, wishlist }) {
   const isWishlisted = wishlist.includes(product.id);
 
@@ -14,20 +15,20 @@ function ProductCard({ product, toggleWishlist, wishlist }) {
         {isWishlisted ? "❤️ Remove" : "🤍 Wishlist"}
       </button>
 
-<a
-  href={product.link}
-  target="_blank"
-  rel="noreferrer"
-  onClick={() => {
-    ReactGA.event({
-      category: "Amazon Click",
-      action: product.name,
-      label: product.category,
-    });
-  }}
->
-  Buy on Amazon
-</a>
+      <a
+        href={product.link}
+        target="_blank"
+        rel="noreferrer"
+        onClick={() => {
+          ReactGA.event({
+            category: "Amazon Click",
+            action: product.name,
+            label: product.category,
+          });
+        }}
+      >
+        Buy on Amazon
+      </a>
     </div>
   );
 }

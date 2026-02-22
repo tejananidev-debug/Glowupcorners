@@ -51,7 +51,11 @@ function App() {
     : searchFiltered;
 
   // Sort
-  const finalProducts = wishlistFiltered;
+  const finalProducts = [...wishlistFiltered].sort((a, b) => {
+    if (sortOrder === "lowToHigh") return a.price - b.price;
+    if (sortOrder === "highToLow") return b.price - a.price;
+    return 0;
+  });
 
   return (
     <>
